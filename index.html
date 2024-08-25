@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Gooseberry</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      .header-top {
+        background-color: #000;
+        padding: 12px 10px;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .header-top span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-area {
+        padding: 16px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid #e2ddd8;
+      }
+
+      .nav-area svg {
+        width: 26px;
+        height: 26px;
+        color: black;
+      }
+
+      .nav-area .logo {
+        width: 170px;
+        height: 35px;
+        margin: 0 15px;
+      }
+
+      .search-input-container {
+        display: none;
+        margin-top: 10px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .search-input-container.show {
+        display: block;
+        opacity: 1;
+      }
+
+      .search-input {
+        width: 80%;
+        padding: 6px 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      .item-slider {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        overflow-x: auto;
+      }
+      .item-slider::-webkit-scrollbar {
+        width: 0;
+      }
+      .item-slider img {
+        width: 104px;
+        height: 140px;
+      }
+      .item-slider span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: rgba(21, 21, 21, 1);
+      }
+      .hero-area img {
+        width: 100%;
+        margin-top: 10px;
+      }
+      .mega-menu {
+        padding: 0 10px;
+        display: none; /* Initially hidden */
+      }
+      .mega-menu .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 20px 0;
+        border-bottom: 1px solid #222;
+      }
+      .mega-menu span {
+        font-weight: 600;
+      }
+      .submenu {
+        display: none;
+        margin-top: 10px;
+        padding-left: 15px;
+        margin: 0;
+      }
+      .submenu a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        margin-bottom: 20px;
+      }
+      .submenu.show {
+        border-bottom: 1px solid #222;
+        display: block;
+      }
+      .menu-others .list,
+      .login,
+      .currency {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
+        color: #222;
+      }
+      .menu-others {
+        margin: 20px 0;
+      }
+      .menu-others .list svg {
+        width: 25px;
+        height: 25px;
+      }
+      .menu-others .login svg {
+        width: 25px;
+        height: 25px;
+      }
+      .menu-others .currency img {
+        width: 25px;
+        height: 25px;
+      }
+      .menu-others .login {
+        margin-top: 15px;
+      }
+      .menu-others .currency {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-top">
+        <span
+          >Free climate compensated shipping on all orders above $125 USD</span
+        >
+      </div>
+
+      <div class="nav-area">
+        <a href="#" id="menu-icon">
+          <svg
+            id="menu-svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.692 12.646h16.616M3.692 5.762h16.616M3.692 19.608h16.616"
+              stroke="currentColor"
+              stroke-width="1.2"
+            ></path>
+          </svg>
+        </a>
+        <a href="#" id="search-icon">
+          <svg
+            id="search-svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.048 17.89a6.923 6.923 0 1 0 0-13.847 6.923 6.923 0 0 0 0 13.847z"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+            ></path>
+            <path
+              d="m16 16 4.308 4.308"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-miterlimit="10"
+            ></path>
+          </svg>
+        </a>
+
+        <a href="#">
+          <img class="logo" src="asset/img/logo_black.webp" alt="" />
+        </a>
+        <a href="#">
+          <img src="asset/img/favorite.png" alt="" />
+        </a>
+        <a href="#">
+          <img src="asset/img/add-card.png" alt="" />
+        </a>
+      </div>
+
+      <div class="mega-menu" id="mega-menu">
+        <div class="menu-item">
+          <div class="menu">
+            <span>LINGERIE</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>BRAS</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>PANTIES</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>SWIMWEAR</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>CLOTHING</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>LOUNGE</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>COLLECTIONS</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu">
+            <span>NEW</span>
+            <a href="#">
+              <svg
+                width="13"
+                class="icon-arrow-acc"
+                height="8"
+                viewBox="0 0 13 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.5 1L6.5 7L0.5 0.999999"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="submenu">
+            <a href="https://gooseberryintimates.com/collections/shop-bras"
+              >Bras</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+              >Panties</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-swimwear"
+              >Lingerie Sets</a
+            >
+            <a
+              href="https://gooseberryintimates.com/collections/shop-all-intimates"
+              >Sleepwear</a
+            >
+          </div>
+        </div>
+
+        <div class="menu-others">
+          <a href="#" class="list">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.926 18.874c4.609-4.015 8.176-7.694 8.176-10.661 0-2.151-1.577-3.713-3.75-3.713-1.898 0-3.477 1.393-4.426 2.989C10.977 5.893 9.398 4.5 7.5 4.5c-2.173 0-3.75 1.561-3.75 3.713 0 2.967 3.567 6.646 8.176 10.661z"
+                stroke="currentColor"
+                stroke-width="1.05"
+                stroke-miterlimit="10"
+              ></path>
+            </svg>
+            <span>WISHLIST</span>
+          </a>
+          <a href="#" class="login">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 12.413a4.358 4.358 0 1 0 0-8.715 4.358 4.358 0 0 0 0 8.715zM3.488 20.857c0-3.085 1.594-5.61 5.26-5.61h6.503c3.667 0 5.261 2.525 5.261 5.61"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-miterlimit="10"
+              ></path>
+            </svg>
+            <span>REGISTER / LOGIN</span>
+          </a>
+          <a href="#" class="currency">
+            <img src="asset/img/currency.png" alt="" />
+            <span>CURRENCY</span>
+          </a>
+        </div>
+      </div>
+
+      <div id="search-container" class="search-input-container">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search..."
+        />
+      </div>
+
+      <div class="item-slider">
+        <a href="https://gooseberryintimates.com/collections/shop-bras">
+          <img src="asset/img/item1.png" alt="" />
+          <span>BRAS</span>
+        </a>
+        <a
+          href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
+        >
+          <img src="asset/img/item2.png" alt="" />
+          <span>PANTIES</span>
+        </a>
+        <a href="https://gooseberryintimates.com/collections/shop-all-swimwear">
+          <img src="asset/img/item3.png" alt="" />
+          <span>SWIMWEAR</span>
+        </a>
+        <a
+          href="https://gooseberryintimates.com/collections/shop-all-intimates"
+        >
+          <img src="asset/img/item1.png" alt="" />
+          <span>LINGERIE</span>
+        </a>
+        <a href="https://gooseberryintimates.com/collections/clothing">
+          <img src="asset/img/item2.png" alt="" />
+          <span>CLOTHING</span>
+        </a>
+        <a href="https://gooseberryintimates.com/collections/shop-loungewear">
+          <img src="asset/img/item3.png" alt="" />
+          <span>LOUNGE</span>
+        </a>
+      </div>
+
+      <div class="hero-area">
+        <img src="asset/img/hero.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      // JavaScript to handle the search input show/hide and icon toggle
+      document
+        .getElementById('search-icon')
+        .addEventListener('click', function (event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          const searchContainer = document.getElementById('search-container');
+          const searchSvg = document.getElementById('search-svg');
+
+          // Toggle the display of the search input
+          searchContainer.classList.toggle('show');
+
+          // Toggle the icon
+          if (searchContainer.classList.contains('show')) {
+            searchSvg.outerHTML = `<svg id="search-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.462 6.479 5.538 19.402M5.538 6.479l12.924 12.923" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+          } else {
+            searchSvg.outerHTML = `<svg id="search-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.048 17.89a6.923 6.923 0 1 0 0-13.847 6.923 6.923 0 0 0 0 13.847z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round"></path><path d="m16 16 4.308 4.308" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10"></path></svg>`;
+          }
+        });
+
+      // JavaScript to handle the mega menu toggle and submenu toggle
+      document
+        .getElementById('menu-icon')
+        .addEventListener('click', function (event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          const megaMenu = document.getElementById('mega-menu');
+          const menuSvg = document.getElementById('menu-svg');
+
+          // Toggle the mega menu display
+          megaMenu.style.display =
+            megaMenu.style.display === 'none' || megaMenu.style.display === ''
+              ? 'block'
+              : 'none';
+
+          // Toggle the icon between menu and cross
+          if (megaMenu.style.display === 'block') {
+            menuSvg.outerHTML = `<svg id="menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.462 6.479 5.538 19.402M5.538 6.479l12.924 12.923" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+          } else {
+            menuSvg.outerHTML = `<svg id="menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.692 12.646h16.616M3.692 5.762h16.616M3.692 19.608h16.616" stroke="currentColor" stroke-width="1.2"></path></svg>`;
+          }
+        });
+
+      // JavaScript to handle the lingerie submenu toggle
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuItems = document.querySelectorAll('.menu-item .menu');
+
+        menuItems.forEach((menu) => {
+          menu.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+
+            // Get the submenu related to the clicked menu
+            const submenu = this.nextElementSibling;
+
+            // Toggle the submenu display
+            if (
+              submenu.style.display === 'none' ||
+              submenu.style.display === ''
+            ) {
+              submenu.style.display = 'block';
+              submenu.classList.add('show');
+              this.style.borderBottom = 'none'; // Remove border from .menu
+            } else {
+              submenu.style.display = 'none';
+              submenu.classList.remove('show');
+              this.style.borderBottom = '1px solid #222'; // Restore border to .menu
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
