@@ -581,31 +581,49 @@
 
       <div class="item-slider">
         <a href="https://gooseberryintimates.com/collections/shop-bras">
-          <img src="asset/img/item1.png" alt="" />
+          <img
+            src="https://storage.googleapis.com/abtest-img-bucket/gby-8/raw/bras-1x.png"
+            alt=""
+          />
           <span>BRAS</span>
         </a>
         <a
           href="https://gooseberryintimates.com/collections/shop-briefs-intimates"
         >
-          <img src="asset/img/item2.png" alt="" />
+          <img
+            src="https://storage.googleapis.com/abtest-img-bucket/gby-8/raw/panties-1x.png"
+            alt=""
+          />
           <span>PANTIES</span>
         </a>
         <a href="https://gooseberryintimates.com/collections/shop-all-swimwear">
-          <img src="asset/img/item3.png" alt="" />
+          <img
+            src="https://storage.googleapis.com/abtest-img-bucket/gby-8/raw/swimwear-1x.png"
+            alt=""
+          />
           <span>SWIMWEAR</span>
         </a>
         <a
           href="https://gooseberryintimates.com/collections/shop-all-intimates"
         >
-          <img src="asset/img/item1.png" alt="" />
+          <img
+            src="https://storage.googleapis.com/abtest-img-bucket/gby-8/raw/lingerie-1x.png"
+            alt=""
+          />
           <span>LINGERIE</span>
         </a>
         <a href="https://gooseberryintimates.com/collections/clothing">
-          <img src="asset/img/item2.png" alt="" />
+          <img
+            src="https://storage.googleapis.com/abtest-img-bucket/gby-8/raw/clothing-1x.png"
+            alt=""
+          />
           <span>CLOTHING</span>
         </a>
         <a href="https://gooseberryintimates.com/collections/shop-loungewear">
-          <img src="asset/img/item3.png" alt="" />
+          <img
+            src="https://storage.googleapis.com/abtest-img-bucket/gby-8/raw/lounge-1x.png"
+            alt=""
+          />
           <span>LOUNGE</span>
         </a>
       </div>
@@ -616,18 +634,15 @@
     </div>
 
     <script>
-      // JavaScript to handle the search input show/hide and icon toggle
       document
         .getElementById('search-icon')
         .addEventListener('click', function (event) {
-          event.preventDefault(); // Prevent default anchor behavior
+          event.preventDefault();
           const searchContainer = document.getElementById('search-container');
           const searchSvg = document.getElementById('search-svg');
 
-          // Toggle the display of the search input
           searchContainer.classList.toggle('show');
 
-          // Toggle the icon
           if (searchContainer.classList.contains('show')) {
             searchSvg.outerHTML = `<svg id="search-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.462 6.479 5.538 19.402M5.538 6.479l12.924 12.923" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
           } else {
@@ -635,21 +650,18 @@
           }
         });
 
-      // JavaScript to handle the mega menu toggle and submenu toggle
       document
         .getElementById('menu-icon')
         .addEventListener('click', function (event) {
-          event.preventDefault(); // Prevent default anchor behavior
+          event.preventDefault();
           const megaMenu = document.getElementById('mega-menu');
           const menuSvg = document.getElementById('menu-svg');
 
-          // Toggle the mega menu display
           megaMenu.style.display =
             megaMenu.style.display === 'none' || megaMenu.style.display === ''
               ? 'block'
               : 'none';
 
-          // Toggle the icon between menu and cross
           if (megaMenu.style.display === 'block') {
             menuSvg.outerHTML = `<svg id="menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.462 6.479 5.538 19.402M5.538 6.479l12.924 12.923" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
           } else {
@@ -657,29 +669,26 @@
           }
         });
 
-      // JavaScript to handle the lingerie submenu toggle
       document.addEventListener('DOMContentLoaded', function () {
         const menuItems = document.querySelectorAll('.menu-item .menu');
 
         menuItems.forEach((menu) => {
           menu.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default anchor behavior
+            event.preventDefault();
 
-            // Get the submenu related to the clicked menu
             const submenu = this.nextElementSibling;
 
-            // Toggle the submenu display
             if (
               submenu.style.display === 'none' ||
               submenu.style.display === ''
             ) {
               submenu.style.display = 'block';
               submenu.classList.add('show');
-              this.style.borderBottom = 'none'; // Remove border from .menu
+              this.style.borderBottom = 'none';
             } else {
               submenu.style.display = 'none';
               submenu.classList.remove('show');
-              this.style.borderBottom = '1px solid #222'; // Restore border to .menu
+              this.style.borderBottom = '1px solid #222';
             }
           });
         });
